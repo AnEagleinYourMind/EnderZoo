@@ -1,12 +1,12 @@
 package crazypants.enderzoo.config;
 
-import crazypants.enderzoo.IoUtil;
-import crazypants.enderzoo.Log;
-import crazypants.enderzoo.spawn.impl.SpawnEntry;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import crazypants.enderzoo.IoUtil;
+import crazypants.enderzoo.Log;
+import crazypants.enderzoo.spawn.impl.SpawnEntry;
 
 public class SpawnConfig {
 

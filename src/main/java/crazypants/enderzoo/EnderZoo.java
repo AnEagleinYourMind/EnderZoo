@@ -1,5 +1,7 @@
 package crazypants.enderzoo;
 
+import static crazypants.enderzoo.EnderZoo.*;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -9,8 +11,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import crazypants.enderzoo.config.Config;
 import crazypants.enderzoo.spawn.MobSpawnEventHandler;
 import crazypants.enderzoo.spawn.MobSpawns;
-
-import static crazypants.enderzoo.EnderZoo.*;
 
 @Mod(
         modid = MODID,

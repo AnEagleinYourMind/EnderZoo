@@ -1,8 +1,5 @@
 package crazypants.enderzoo.config;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,16 +37,6 @@ public class SpawnConfigParser extends DefaultHandler {
             return parse(is);
         } finally {
             IOUtils.closeQuietly(sr);
-        }
-    }
-
-    public static List<SpawnEntry> parseSpawnConfig(File file) throws Exception {
-        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
-        InputSource is = new InputSource(bis);
-        try {
-            return parse(is);
-        } finally {
-            IOUtils.closeQuietly(bis);
         }
     }
 
@@ -101,7 +88,7 @@ public class SpawnConfigParser extends DefaultHandler {
             BiomeDictionary.Type.SANDY, BiomeDictionary.Type.SNOWY, BiomeDictionary.Type.WASTELAND,
             BiomeDictionary.Type.BEACH, };
 
-    private final List<SpawnEntry> result = new ArrayList<SpawnEntry>();
+    private final List<SpawnEntry> result = new ArrayList<>();
 
     private SpawnEntry currentEntry;
     private IBiomeFilter currentFilter;
@@ -202,9 +189,8 @@ public class SpawnConfigParser extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         if (ELEMENT_ENTRY.equals(localName) && currentEntry != null) {
-            if (currentEntry != null) {
-                result.add(currentEntry);
-            }
+            result.add(currentEntry);
+
             currentEntry = null;
         } else if (ELEMENT_FILTER.equals(localName)) {
             if (currentFilter != null && currentEntry != null) {
@@ -407,18 +393,6 @@ public class SpawnConfigParser extends DefaultHandler {
         } catch (Exception e) {
             Log.warn(
                     "Could not parse a valid int for attribute " + qName
-                            + " with value "
-                            + getStringValue(qName, attributes, null));
-            return def;
-        }
-    }
-
-    public static float getFloatValue(String qName, Attributes attributes, float def) {
-        try {
-            return Float.parseFloat(getStringValue(qName, attributes, def + ""));
-        } catch (Exception e) {
-            Log.warn(
-                    "Could not parse a valid float for attribute " + qName
                             + " with value "
                             + getStringValue(qName, attributes, null));
             return def;

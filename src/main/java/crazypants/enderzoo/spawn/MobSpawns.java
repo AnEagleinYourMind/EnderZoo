@@ -20,13 +20,14 @@ public final class MobSpawns {
 
     public static final MobSpawns instance = new MobSpawns();
 
-    private final List<ISpawnEntry> spawnEntries = new ArrayList<ISpawnEntry>();
+    private final List<ISpawnEntry> spawnEntries = new ArrayList<>();
 
     private MobSpawns() {}
 
     public void loadSpawnConfig() {
         List<SpawnEntry> entries = SpawnConfig.loadSpawnConfig();
-        if (entries != null) {
+
+        if (!entries.isEmpty()) {
             Log.info("Applying " + entries.size() + " spawn entries from config.");
             for (SpawnEntry entry : entries) {
                 addSpawn(entry);
@@ -39,9 +40,7 @@ public final class MobSpawns {
 
     public void addSpawn(ISpawnEntry entry) {
 
-        if (entry == null) {
-            return;
-        }
+        if (entry == null) return;
         spawnEntries.add(entry);
 
         @SuppressWarnings("unchecked")
@@ -94,7 +93,7 @@ public final class MobSpawns {
 
     }
 
-    protected static void printBiomeNames(BiomeGenBase[] biomes) {
+    private static void printBiomeNames(BiomeGenBase[] biomes) {
         for (BiomeGenBase biome : biomes) {
             if (biome != null) {
                 System.out.print(biome.biomeName + ", ");
@@ -107,5 +106,4 @@ public final class MobSpawns {
     public Collection<ISpawnEntry> getEntries() {
         return spawnEntries;
     }
-
 }

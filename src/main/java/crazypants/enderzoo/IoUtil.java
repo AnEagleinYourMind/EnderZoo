@@ -22,7 +22,7 @@ public class IoUtil {
             return readStream(new FileInputStream(copyTo));
         }
         String output = copyTextTo(copyTo, in);
-        return output.toString();
+        return output;
     }
 
     public static String copyTextTo(File copyTo, InputStream from) throws IOException {
@@ -31,7 +31,7 @@ public class IoUtil {
         try {
             makePath(copyTo);
             writer = new BufferedWriter(new FileWriter(copyTo, false));
-            writer.write(output.toString());
+            writer.write(output);
         } finally {
             IOUtils.closeQuietly(writer);
         }

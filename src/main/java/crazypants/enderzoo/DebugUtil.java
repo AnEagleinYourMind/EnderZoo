@@ -7,7 +7,6 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -75,13 +74,6 @@ public class DebugUtil {
             lastMouseOver = null;
         }
 
-    }
-
-    @SubscribeEvent
-    public void onMonsterSpawn(LivingSpawnEvent evt) {
-        if (evt.entityLiving != null) { // && !evt.entityLiving.getClass().getName().contains("enderzoo")) {
-            // evt.setResult(Result.DENY);
-        }
     }
 
 }
